@@ -1,0 +1,80 @@
+<style type="text/css">
+  table, th, td {
+    border: 1px solid black;
+  }
+
+  th, td {
+    padding: 15px;
+  }
+</style>
+
+<!-- <script>
+  function myFunction() {
+    var arr = [];
+    var x = document.getElementsByClassName("selection");    
+    for(var i = 0; i < x.length; i++){
+      if(x[i].checked){
+        arr[i] = x[i].value;
+      }
+    }
+    alert("Generating bill for following: " + arr);
+    document.
+    // return arr;
+    // jQuery.ajax({
+    //   type: "GET",
+    //   url: "/companies/generate_bill",
+    //   data: { ticket_ids: 1}
+    // });
+  }
+</script>
+-->
+<p id="notice" style="background-color: red"><%= notice %></p>
+
+<h1>Tickets</h1>
+<%= form_tag(generate_bill_companies_path, method: 'post') do %>
+  <table style="margin-left: auto; margin-right: auto;">
+    <thead>
+      <tr>
+        <th>D/O Booking</th>
+        <th>B/O Journey</th>
+        <th>Passenger name</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Class</th>
+        <th>Amount</th>
+        <th>Company</th>
+        <th colspan="3">Actions</th>
+        <th>Select</th>
+      </tr>
+    </thead>
+    <% company = Company.find(params[:id]) %>
+    <tbody>
+      <% company.tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.dob %></td>
+        <td><%= ticket.doj %></td>
+        <td><%= ticket.passenger_name %></td>
+        <td><%= ticket.from %></td>
+        <td><%= ticket.to %></td>
+        <td><%= ticket.travel_class %></td>
+        <td><%= ticket.amount %></td>
+        <td><%= link_to ticket.company.name , company_path(ticket.company) %><%= ticket.company.branch %></td>
+        <td><%= link_to 'Show', ticket %></td>
+        <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+        <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= check_box_tag 'ticket_ids[]', ticket.id %>          
+        </td>
+      </tr>    
+      <% end %>
+    </tbody>
+  </table><br>
+  <%= submit_tag "Generate Bill" %>
+<% end %>
+
+<br>
+<button><%= link_to 'New Ticket', new_ticket_path %></button><br><br>
+<%# if company.tickets.count > 0 %>
+<!-- <button onclick="myFunction()" >Generate Bill<%#= render 'generate_bill' %></button> -->
+<%# end %>
+
+

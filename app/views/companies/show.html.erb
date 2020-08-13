@@ -1,0 +1,14 @@
+<p id="notice" style="background-color: green;"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+
+<p>
+  <strong>Branch:</strong>
+  <%= @company.branch %>
+</p>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

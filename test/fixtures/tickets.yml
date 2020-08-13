@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  passenger_name: MyString
+  from: MyString
+  to: MyString
+  travel_class: MyString
+  amount: 1.5
+  company: one
+
+two:
+  passenger_name: MyString
+  from: MyString
+  to: MyString
+  travel_class: MyString
+  amount: 1.5
+  company: two

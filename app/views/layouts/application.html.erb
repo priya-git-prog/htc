@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTC</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body style="text-align:center; vertical-align:middle; background-color: lightsteelblue;">
+    <%= render 'layouts/header'%>
+    <%= yield %>
+    <%= render 'layouts/footer'%>
+  </body>
+</html>

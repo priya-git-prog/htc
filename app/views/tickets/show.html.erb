@@ -1,0 +1,44 @@
+<p id="notice" style="background-color: green;"><%= notice %></p>
+
+<p>
+  <strong>D/O Booking:</strong>
+  <%= @ticket.dob %>
+</p>
+
+<p>
+  <strong>D/O Journey:</strong>
+  <%= @ticket.doj %>
+</p>
+
+<p>
+  <strong>Passenger name:</strong>
+  <%= @ticket.passenger_name %>
+</p>
+
+<p>
+  <strong>From:</strong>
+  <%= @ticket.from %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= @ticket.to %>
+</p>
+
+<p>
+  <strong>Class:</strong>
+  <%= @ticket.travel_class %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @ticket.amount %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @ticket.company.name %>
+</p>
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', company_ticket_company_path(@ticket.company) %>

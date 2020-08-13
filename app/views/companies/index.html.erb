@@ -1,0 +1,40 @@
+<style type="text/css">
+  table, th, td {
+    border: 1px solid black;
+  }
+
+  th, td {
+    padding: 15px;
+  }
+</style>
+<p id="notice" style="background-color: green;"><%= notice %></p>
+
+<h1>Companies</h1>
+
+<table style="margin-left: auto; margin-right: auto;">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Branch</th>
+      <th colspan="3">Actions</th>
+      <th>Tickets</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+    <tr>
+      <td><%= company.name %></td>
+      <td><%= company.branch %></td>
+      <td><%= link_to 'Show', company %></td>
+      <td><%= link_to 'Edit', edit_company_path(company) %></td>
+      <td><%= link_to 'Destroy', company, method: :delete %></td>
+      <td><%= link_to "All Tickets", company_ticket_company_path(company) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Company', new_company_path %>
