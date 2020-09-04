@@ -8,7 +8,10 @@
     <td><%= ticket.from %></td>
     <td><%= ticket.to %></td>
     <td><%= ticket.travel_class %></td>
-    <td><%= ticket.amount %></td>
+    <td><%= ticket.ticket_amount %></td>
+    <td><%= ticket.agent_charge %></td>
+    <td><%= ticket.cgst %></td>
+    <td><%= ticket.sgst %></td>
     <td><%= ticket.company.formatted_name %></td>
   </tr>
   <% end %>

@@ -25,7 +25,6 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
-
     respond_to do |format|
       if @ticket.save
         format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
@@ -69,6 +68,6 @@ class TicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:dob, :doj, :passenger_name, :from, :to, :travel_class, :amount, :company_id)
+      params.require(:ticket).permit(:dob, :doj, :passenger_name, :from, :to, :travel_class, :ticket_amount, :agent_charge, :cgst, :sgst, :company_id)
     end
 end

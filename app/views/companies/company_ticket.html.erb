@@ -40,7 +40,10 @@
         <th>From</th>
         <th>To</th>
         <th>Class</th>
-        <th>Amount</th>
+        <th>Ticket Amount</th>
+        <th>Agent Charge</th>
+        <th>CGST</th>
+        <th>SGST</th>
         <th>Company</th>
         <th colspan="3">Actions</th>
         <th>Select</th>
@@ -55,7 +58,10 @@
         <td><%= ticket.from %></td>
         <td><%= ticket.to %></td>
         <td><%= ticket.travel_class %></td>
-        <td><%= ticket.amount %></td>
+        <td><%= ticket.ticket_amount %></td>
+        <td><%= ticket.agent_charge %></td>
+        <td><%= ticket.cgst %></td>
+        <td><%= ticket.sgst %></td>
         <td><%= link_to ticket.company.formatted_name , company_path(ticket.company) %></td>
         <td><%= link_to 'Show', ticket %></td>
         <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>

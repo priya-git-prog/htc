@@ -3,7 +3,7 @@ class BillingService
   attr_reader :tickets
   attr_accessor :report
 
-  CSV_COLUMN = %w(dob doj passenger_name from to travel_class amount)
+  CSV_COLUMN = %w(dob doj passenger_name from to travel_class ticket_amount agent_charge cgst sgst)
 
   def initialize tickets_ids
     @tickets = Ticket.find(tickets_ids)
@@ -17,10 +17,12 @@ class BillingService
   def generate_bill
     file = "htc-bill-#{Time.now.to_i}.csv"
     @attributes = CSV_COLUMN
-    total_amount = 0
+    total_amount = cgst_total = sgst_total = 0
     tickets.each do |data|
       report << data.as_json
-      total_amount += data["amount"]
+      total_amount += data["ticket_amount"] + data["agent_charge"]
+      cgst_total += data["cgst"] if data["cgst"].present?
+      sgst_total += data["sgst"] if data["sgst"].present?
     end
     CSV.open(file, "wb") do |csv|
       csv << Array.wrap(title) if respond_to?(:title) && title.present?
@@ -29,7 +31,7 @@ class BillingService
         row = row.to_hash.with_indifferent_access        
         csv << @attributes.map{|attr| row[attr]}        
       end
-      csv << ["", "", "", "", "", "Total amount:", total_amount]
+      csv << ["", "", "", "", "", "", "Total Amount:", total_amount, cgst_total, sgst_total]
     end    
     file
   end

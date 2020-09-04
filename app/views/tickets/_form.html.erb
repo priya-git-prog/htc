@@ -42,8 +42,23 @@
   </div>
 
   <div class="field">
-    <%= form.label :amount %>
-    <%= form.text_field :amount, id: :ticket_amount %>
+    <%= form.label :ticket_amount %>
+    <%= form.text_field :ticket_amount, id: :ticket_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :agent_charge %>
+    <%= form.text_field :agent_charge, id: :ticket_agent_charge %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cgst %>
+    <%= form.text_field :cgst, id: :ticket_cgst %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sgst %>
+    <%= form.text_field :sgst, id: :ticket_sgst %>
   </div>
 
   <div class="field">
