@@ -8,7 +8,6 @@
   }
 </style>
 
-<p id="notice" style="background-color: green;"><%= notice %></p>
 
 <h1>Tickets</h1>
 
@@ -37,15 +36,15 @@
         <td><%= ticket.to %></td>
         <td><%= ticket.travel_class %></td>
         <td><%= ticket.amount %></td>
-        <td><%= link_to ticket.company.name , company_path(ticket.company) %><%= ticket.company.branch %></td>
+        <td><%= link_to ticket.company.formatted_name , company_path(ticket.company) %></td>
         <td><%= link_to 'Show', ticket %></td>
         <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-        <td><%= link_to 'Destroy', ticket, method: :delete %></td>
+        <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @tickets %>
 <br>
 
 <%= link_to 'New Ticket', new_ticket_path %>

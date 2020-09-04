@@ -7,7 +7,6 @@
     padding: 15px;
   }
 </style>
-<p id="notice" style="background-color: green;"><%= notice %></p>
 
 <h1>Companies</h1>
 
@@ -28,13 +27,13 @@
       <td><%= company.branch %></td>
       <td><%= link_to 'Show', company %></td>
       <td><%= link_to 'Edit', edit_company_path(company) %></td>
-      <td><%= link_to 'Destroy', company, method: :delete %></td>
+      <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <td><%= link_to "All Tickets", company_ticket_company_path(company) %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @companies %>
 <br>
 
 <%= link_to 'New Company', new_company_path %>

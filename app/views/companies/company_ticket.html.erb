@@ -28,7 +28,6 @@
   }
 </script>
 -->
-<p id="notice" style="background-color: red"><%= notice %></p>
 
 <h1>Tickets</h1>
 <%= form_tag(generate_bill_companies_path, method: 'post') do %>
@@ -36,7 +35,7 @@
     <thead>
       <tr>
         <th>D/O Booking</th>
-        <th>B/O Journey</th>
+        <th>D/O Journey</th>
         <th>Passenger name</th>
         <th>From</th>
         <th>To</th>
@@ -47,9 +46,8 @@
         <th>Select</th>
       </tr>
     </thead>
-    <% company = Company.find(params[:id]) %>
     <tbody>
-      <% company.tickets.each do |ticket| %>
+      <% @company_tickets.each do |ticket| %>
       <tr>
         <td><%= ticket.dob %></td>
         <td><%= ticket.doj %></td>
@@ -58,7 +56,7 @@
         <td><%= ticket.to %></td>
         <td><%= ticket.travel_class %></td>
         <td><%= ticket.amount %></td>
-        <td><%= link_to ticket.company.name , company_path(ticket.company) %><%= ticket.company.branch %></td>
+        <td><%= link_to ticket.company.formatted_name , company_path(ticket.company) %></td>
         <td><%= link_to 'Show', ticket %></td>
         <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
         <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -70,7 +68,7 @@
   </table><br>
   <%= submit_tag "Generate Bill" %>
 <% end %>
-
+<%= will_paginate @company_tickets %>
 <br>
 <button><%= link_to 'New Ticket', new_ticket_path %></button><br><br>
 <%# if company.tickets.count > 0 %>

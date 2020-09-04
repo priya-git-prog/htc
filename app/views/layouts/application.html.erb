@@ -2,14 +2,22 @@
 <html>
   <head>
     <title>HTC</title>
+    <link rel = "icon" href = "download.png" type = "image/x-icon">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body style="text-align:center; vertical-align:middle; background-color: lightsteelblue;">
+  <body style="text-align:center; vertical-align:middle;">
+    <!-- style="text-align:center; vertical-align:middle; background-image: url(download.png); background-repeat: no-repeat; background-position: bottom;" -->
     <%= render 'layouts/header'%>
+    <br>
+    <% flash.each do |type, msg| %>
+      <div id="notice">
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
     <%= render 'layouts/footer'%>
   </body>

@@ -1,10 +1,10 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :company_ticket]
 
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.all.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /companies/1
@@ -62,6 +62,7 @@ class CompaniesController < ApplicationController
   end
 
   def company_ticket
+    @company_tickets = @company.tickets.paginate(page: params[:page], per_page: 5)
   end
 
   def generate_bill
